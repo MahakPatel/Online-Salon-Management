@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+</head>
+<body>
+    <center>
+
+            <div class="box">
+                	<img src="{%static 'dummy/figure-1.jpg'%}" alt="">
+                <input type="text"  placeholder="User name" value="{{user.username}}" >
+                <input type="text"  placeholder="last name" value="{{user.lastname}}">
+                <input type="email" placeholder="email id"  value="{{user.email}}">
+                <input type="text"  placeholder="Mobile No."  value="{{user.phone}}">
+
+
+
+                <button style="'float: left;margin:10px 0 0 18.2%;"><a href="/user_dash">Dashboard</button>
+
+                <button style="'float: right;margin:10px 0 0 18.2%;">Done</button>
+                <button style="'float: middle;margin:10px 0 0 18.2%;"><a href="/home">Home</button>
+            </div>
+    </center>
+</body>
+</html>

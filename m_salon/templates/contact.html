@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>Beauty Salon | Contact</title>
+		<!-- Loading third party fonts -->
+		<link href="{%static 'fonts/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+		<link href="{%static 'fonts/novecento-font/novecento-font.css'%}" rel="stylesheet" type="text/css">
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{%static 'style.css'%}">
+
+		<!--[if lt IE 9]>
+		<script src="{%static 'js/ie-support/html5.js'%}"></script>
+		<script src="{%static 'js/ie-support/respond.js'%}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+
+			<header class="site-header">
+				<div class="container">
+					<a id="branding" href="{%static 'index.html'%}">
+						<img src="{%static 'images/logo.png'%}" alt="Company name" class="logo">
+						<div class="logo-copy">
+							<h1 class="site-title">M&M Hair Salon</h1>
+							<small class="site-description">We'll Style While you Smile!</small>
+						</div>
+					</a> <!-- #branding -->
+
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="/home">Home</a></li>
+							<li class="menu-item"><a href="/about">About</a></li>
+							<li class="menu-item"><a href="/service">Services</a></li>
+							<li class="menu-item"><a href="/new">Gallery</a></li>
+							<li class="menu-item current-menu-item"><a href="/contact">Contact</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+
+			<main class="main-content">
+				<div class="page">
+					<div class="container">
+						<p> <h3>Contact Us</h3></p>
+
+						<div class="row">
+							<div class="col-md-5">
+								<form  class="contact-form">
+									{ % csrf_token % }
+									<input type="text" name="name" id="name" placeholder="Name...">
+									<input type="text" name="email" id="email" placeholder="Email...">
+									<input type="text" name="website" id="website" placeholder="Website...">
+									<textarea  name="message" id=message" placeholder="Message..."></textarea>
+									<div class="text-right">
+										<button class="button large" type="submit">Send Message</button>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-6 col-md-offset-1">
+								<div class="map-container">
+									<div class="mapouter"><div class="gmap_canvas"><iframe width="580" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=Style%20hair%20salon,bilimora&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies2.org"></a><br><style>.mapouter{position:relative;text-align:right;height:450px;width:580px;}</style><a href="https://www.embedgooglemap.net">embed google map without iframe</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+									<div class="address-info">
+										<address>
+											<img src="{%static 'images/icon-map-small.png'%}" class="icon">
+											<p><strong>M&M Hair Saloon </strong> 263, Navsari</p>
+										</address>
+										<div class="contact-info">
+											<a href="{%static 'M&Msalon@gmail.com'%}" class="mail"><img src="{%static 'images/icon-envelope-small.png'%}" class="icon">M&Msalon@gmail.com</a>
+											<a href="{%static '(+91) 9652384523'%}" class="phone"><img src="{%static 'images/icon-phone-small.png'%}" class="icon">(+91) 9652384523</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="widget contact-widget">
+								<h3 class="widget-title">Contact</h3>
+								<div class="contact-info">
+									<address>
+										<img src="{%static 'images/icon-map-small.png'%}" class="icon">
+										<p><strong>M&M Hair Saloon </strong> 263, Navsari</p>
+									</address>
+									<a href="{%static 'M&Msalon@gmail.com'%}" class="mail"><img src="{%static 'images/icon-envelope-small.png'%}" class="icon">M&Msalon@gmail.com</a>
+									<a href="{%static '(+91) 9652384523'%}" class="phone"><img src="{%static 'images/icon-phone-small.png'%}" class="icon">(+91) 9652384523</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="widget">
+								<h3 class="widget-title">Social Media</h3>
+								<p>Follow Us</p>
+								<div class="social-links">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="colophon">
+
+					</div>
+				</div>
+			</footer>
+		</div>
+
+
+
+
+		<script src="{%static 'js/jquery-1.11.1.min.js'%}"></script>
+		<script src="{%static 'http://maps.google.com/maps/api/js?sensor=false&amp;language=en'%}"></script>
+		<script src="{%static 'js/plugins.js'%}"></script>
+		<script src="{%static 'js/app.js'%}"></script>
+
+	</body>
+
+</html>

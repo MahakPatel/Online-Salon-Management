@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>Beauty Salon</title>
+		<!-- Loading third party fonts -->
+		<link href="{% static 'fonts/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+		<link href="{% static 'fonts/novecento-font/novecento-font.css'%}" rel="stylesheet" type="text/css">
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'style.css'%}">
+
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js'%}"></script>
+		<script src="{% static 'js/ie-support/respond.js'%}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body class="homepage header-collapse">
+
+		<div id="site-content">
+
+			<header class="site-header">
+				<div class="container">
+					<a id="branding" href="index.html">
+						<img src="{% static 'images/logo.png'%}" alt="M&M Hair Salon" class="logo">
+						<div class="logo-copy">
+							<h3 class="site-title">M&M Hair Salon</h3>
+							<small class="site-description">We'll style while you smile!</small>
+						</div>
+					</a> <!-- #branding -->
+
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="/"><h3>Home</h3></a></li>
+
+
+							<li class="menu-item"><a href="/new"><h3>Gallery</h3></a></li>
+							{% if x.is_authenticated %}
+							<li class="menu-item"><a href="/user_dash"><h3>Hello,{{request.user}}</h3></a></li>
+
+							{% else %}
+
+							<li class="menu-item"><a href="/appoinment"><h3>Appoinment</h3></a></li>
+							<li class="menu-item"><a href="/loginhandle"><h3>Login</h3></a></li>
+							<li class="menu-item"><a href="/signup"><h3>Signup</h3></a></li>
+
+
+
+							{% endif %}
+							<li class="menu-item"><a href="/contact"><h3>Contact</h3></a></li>
+
+
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+
+			<div class="hero hero-slider">
+				<ul class="slides">
+					<li data-bg-image="{% static 'dummy/slider-1.png'%}">
+						<div class="container">
+							<h3 class="slider-subtitle">M&M_Hair_Salon</h3>
+							<h2 class="slider-title">Professional</h2>
+							<p>It was always normal to be interested in one's appearance as it characterizes one's identity and determines how people perceive them. MM Salon Hair  offers services for your beauty and well-being provided by experienced specialists. </p>
+
+						</div>
+					</li>
+					<li data-bg-image="{% static 'dummy/slider-2.png'%}">
+						<div class="container">
+							<h3 class="slider-subtitle">M&M_Hair_Salon</h3>
+							<h2 class="slider-title">Professional</h2>
+							<p>It was always normal to be interested in one's appearance as it characterizes one's identity and determines how people perceive them. MM Salon Hair  offers services for your beauty and well-being provided by experienced specialists. </p>
+
+						</div>
+					</li>
+					<li data-bg-image="{% static 'dummy/slider-3.jpg'%}">
+						<div class="container">
+							<h3 class="slider-subtitle">M&M_Hair_Salon</h3>
+							<h2 class="slider-title">Professional</h2>
+							<p>It was always normal to be interested in one's appearance as it characterizes one's identity and determines how people perceive them. MM Salon Hair  offers services for your beauty and well-being provided by experienced specialists. </p>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<main class="main-content">
+				<div class="fullwidth-block latest-news-section">
+
+
+				</div> <!-- .fullwidth-block.features-section -->
+
+				<div class="fullwidth-block team-section">
+					<div class="container">
+						<h2 class="section-title">Our team</h2>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="team">
+									<figure class="team-image"><img src="{% static 'dummy/person-1.jpg'%}"></figure>
+									<h3 class="team-name">Arif Balvar</h3>
+									<p>Head of Saloon-Facial Specialist</p>
+
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team">
+									<figure class="team-image"><img src="{% static 'dummy/person-2.jpg'%}"></figure>
+									<h3 class="team-name">Rocky Sharma</h3>
+									<p>Specialist of Hair Cutting</p>
+
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team">
+									<figure class="team-image"><img src="{% static 'dummy/person-3.jpg'%}"></figure>
+									<h3 class="team-name">Pinky Sharma</h3>
+									<p>Hair Smoothning</p>
+
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team">
+									<figure class="team-image"><img src="{% static 'dummy/person-4.jpg'%}"></figure>
+									<h3 class="team-name">Mehul Bhathhi</h3>
+									<p>Wedding Specialist</p>
+
+								</div>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</div> <!-- .fullwidth-block.team-section -->
+
+				<div class="fullwidth-block information-section">
+					<div class="container">
+						<h2 class="section-title">Information</h2>
+						<div class="row">
+							<div class="col-md-4">
+								<figure><img src="{% static 'dummy/figure-1.jpg'%}" ></figure>
+							</div>
+							<div class="col-md-4">
+								<p>It was always normal to be interested in one's appearance as it characterizes one's identity and determines how people perceive them. MM Salon Hair And Beauty (rated 4.6 by NearByAll visitors) offers services for your beauty and well-being provided by experienced specialists. Professional treatment might save you some time and effort while assuring better results than if done by an amateur.</p>
+							</div>
+							<div class="col-md-4">
+								<p>Here you can also beautify your body via applying cosmetics, work on your hair with hairstyles, haircuts, look after your nails with manicure and pedicure.</p>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .fullwidth-block.information-section -->
+			</main>
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="widget contact-widget">
+								<h3 class="widget-title">Contact</h3>
+								<div class="contact-info">
+									<address>
+										<img src="{% static 'images/icon-map-small.png'%}" class="icon">
+										<p><strong>M&M Hair Saloon</strong> 263, Navsari</p>
+									</address>
+									<a href="mailto:M&Msaloon@gmail.com" class="mail"><img src="{% static 'images/icon-envelope-small.png'%}" class="icon">M&Msaloon@gmail.com</a>
+									<a href="(+91) 9652384523" class="phone"><img src="{% static 'images/icon-phone-small.png'%}" class="icon">(+91) 9652384523</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="widget">
+								<h3 class="widget-title">Social Media</h3>
+								<p>M&M Saloon </p>
+								<div class="social-links">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+
+						</div>
+					</div>
+
+
+				</div>
+			</footer>
+		</div>
+
+
+
+
+		<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
+		<script src="{% static 'js/plugins.js'%}"></script>
+		<script src="{% static 'js/app.js'%}"></script>
+
+	</body>
+
+</html>

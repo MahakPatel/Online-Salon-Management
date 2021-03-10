@@ -1,0 +1,45 @@
+{%  extends 'main1.html' %}
+{% block content %}
+{%  include 'status.html' %}
+
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Booking</th>
+					<th>time</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Remove</th>
+
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{order.service}}</td>
+					<td>{{order.time}}</td>
+					<td>{{order.date}}</td>
+					<td>{{order.status}}</td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'deleteOrder' order.id%}">Remove</a></td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="/myprofile">Update Customer</a>
+
+		</div>
+	</div>
+
+{% endblock %}

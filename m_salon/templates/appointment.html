@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <img src="{% static 'images/logo.png' %}">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+
+          <li class="nav-item">
+        <a class="nav-link" href="/user_dash">Hello,{{request.user}}</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="/service">Services</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/new">Gallery</a>
+      </li>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,900" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-time">
+            <h2 class="heading">Time Open</h2>
+
+            <p>9:00 AM - 6:30 PM</p>
+            <h3 class="heading-days">Monday-Sunday</h3>
+
+            <p>9:00 AM - 9:30 PM (breakfast)</p>
+            <p>1:30 PM - 2:30 PM (lunch)</p>
+
+
+
+            <hr>
+
+            <h4 class="heading-phone">Call Us:0123456789</h4>
+        </div>
+
+        <div class="container-form">
+            <form method="POST">
+                {% csrf_token%}
+                <h2 class="heading heading-yellow">Appointment</h2>
+                <table border="0px" cellpadding="5%" cellspacing="5px" align="center">
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="Name">Name:</label></p>
+                            </td>
+                            <td><input type="text" name="name" id="Name" placeholder="Your Name :"></td>
+                        <!-- </div> -->
+                    </tr>
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="email">Email :</label> </p>
+                            </td>
+                            <td><input type="email" name="email" id="email" placeholder="Your email :"></td>
+                        <!-- </div> -->
+                    </tr>
+
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="date">Date :</label> </p>
+                            </td>
+                            <td><input type="date" required="Required" class="form-control" id="date" name="txtDate"
+                                    placeholder="Select suitable date" /></td>
+                        <!-- </div> -->
+                    </tr>
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="time">Time : </label></p>
+                            </td>
+                            <td><select name="time" id="time">
+                                    <option value="0930">9:30</option>
+                                    <option value="1030">10:30</option>
+                                    <option value="1130">11:30</option>
+                                    <option value="1230">12:30</option>
+                                    <option value="0230">2:30</option>
+                                    <option value="0330">3:30</option>
+                                    <option value="0430">4:30</option>
+                                    <option value="0530">5:30</option>
+                                </select>
+                            </td>
+                        <!-- </div> -->
+                    </tr>
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="service">Service :</label> </p>
+                            </td>
+                            <td><select name="service" id="service">
+                                    <option value="Hair Treatment">Hair Treatment</option>
+                                    <option value="Forming Beard">Forming Beard</option>
+                                    <option value="Hair Wash">Hair Wash</option>
+                                    <option value="Hair Cut">Hair Cut</option>
+                                    <option value="massage">Massage</option>
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Facial and Skin Care">Facial and Skin Care</option>
+                                    <option value="MakeUp">MakeUp</option>
+                                </select>
+                            </td>
+                        <!-- </div> -->
+                    </tr>
+                    <tr>
+                        <!-- <div class="form-field"> -->
+                            <td>
+                                <p><label for="beautician">Beautician :</label></p>
+                            </td>
+                            <td><select name="beautician" id="beautician">
+                                    <option value="Arif Balvar">Arif Balvar</option>
+                                    <option value="Pinky Sharma">Pinky Sharma</option>
+                                    <option value="Rocky Sharma">Rocky Sharma</option>
+                                    <option value="Mehul Bhathhi">Mehul Bhathhi</option>
+                                    <option value="Marie ">Marie </option>
+                                    <option value="Lara">Lara</option>
+                                    <option value="Kiki">Kiki</option>
+                                    <option value="Jack">Jack</option>
+                                </select></td>
+                        <!-- </div> -->
+                    </tr>
+                </table>
+                <button class="btn" onclick="alert('Your Appointments is booked!!')">BOOK</button>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+<script>
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("txtDate")[0].setAttribute('min', today);
+
+
+
+</script>
+
+</html>
+<style>
+    body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+	color: #fff;
+	letter-spacing: 1px;
+
+}
+
+.container {
+	background-color: #fafafa;
+	margin: 200px;
+	box-shadow: 10px 15px 20px rgba(0, 0, 0, .1);
+	display: grid;
+	grid-template-columns: 40% 60%;
+}
+
+.container-time {
+	background-color: rgba(0, 0, 0, .95);
+	padding: 50px;
+	outline: 3px dashed #998100;
+	outline-offset: -30px;
+	text-align: center;
+}
+.heading {
+	font-size: 35px;
+	text-transform: uppercase;
+}
+
+.heading-days {
+	color:#998100;
+	font-size: 30px;
+
+}
+
+.heading-phone {
+	font-size: 20px;
+}
+.container-form {
+	padding: 20px 0;
+	margin: 0 auto;
+	color: #000;
+}
+table{
+	margin-top: 0px;
+}
+form {
+	display: grid;
+	grid-row-gap: 20px;
+}
+form input,form select{
+	padding: 0.5rem;
+    border-radius: 9px;
+    font-size: 1.1rem;
+}
+form p {
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+.form-field {
+	display: flex;
+	justify-content: space-between;
+}
+
+input,select {
+	pad: 10px 15px;
+}
+
+.btn {
+	background-color: rgba(0, 0, 0, .95);
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	font-size: 18px;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	box-shadow: 7px 10px 12px rgba(0, 0, 0, .1);
+	cursor: pointer;
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+}
+
+.btn:hover {
+	transform: scale(1.03);
+	-webkit-transform: scale(1.03);
+	-moz-transform: scale(1.03);
+	-ms-transform: scale(1.03);
+	-o-transform: scale(1.03);
+	box-shadow: 10px 12px 15px rgba(0, 0, 0, .3);
+}
+}
+</style>
