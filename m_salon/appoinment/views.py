@@ -13,7 +13,7 @@ from service import Service
 
 from services.models import service
 
-MERCHANT_KEY = 'jYeGkvD385PQPBeD'
+MERCHANT_KEY = 'your merchant key'
 # Create your views here.
 from appoinment.models import appo, Booking
 from payment import Checksum
@@ -80,7 +80,7 @@ def payment(request):
 
     param_dict = {
 
-        'MID': 'CMHljw77603804792614',
+        'MID': 'your merchant id',
         'ORDER_ID': '205',
         'TXN_AMOUNT':str(bill.price),
         'CUST_ID': 'mahakpatel0208@gmail.com',
