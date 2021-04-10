@@ -8,12 +8,12 @@ from django.db import models
 
 class register(models.Model):
     objects = None
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User,blank=True, null=True, on_delete=models.CASCADE)
     username = models.CharField(max_length=20)
     lastname = models.CharField(max_length=20)
     email = models.EmailField(max_length=70, blank=2)
     phone = models.CharField(max_length=10)
-    profile_pic = models.ImageField(null=True, blank=True)
+    profile_pic = models.ImageField(null=True, blank=True,default='default.png')
     password = models.CharField(max_length=8)
     confirm = models.CharField(max_length=8)
 

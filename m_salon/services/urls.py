@@ -8,7 +8,7 @@ from services import views as services_views
 from home import views as home_views
 urlpatterns = [
 
-       path('', views.service ,name='service'),
+       path('', views.service1 ,name='service'),
 
 
 

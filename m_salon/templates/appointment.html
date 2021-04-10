@@ -29,6 +29,16 @@
     </ul>
   </div>
 </nav>
+    {% block body %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong> </strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endblock body %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +55,7 @@
             <p>9:00 AM - 6:30 PM</p>
             <h3 class="heading-days">Monday-Sunday</h3>
 
-            <p>9:00 AM - 9:30 PM (breakfast)</p>
+            <p>9:00 AM - 9:30 AM (breakfast)</p>
             <p>1:30 PM - 2:30 PM (lunch)</p>
 
 
@@ -86,6 +96,7 @@
                                     placeholder="Select suitable date" /></td>
                         <!-- </div> -->
                     </tr>
+
                     <tr>
                         <!-- <div class="form-field"> -->
                             <td>
@@ -109,7 +120,8 @@
                             <td>
                                 <p><label for="service">Service :</label> </p>
                             </td>
-                            <td><select name="service" id="service">
+                            <td><select name="service" id="service" onchange="random_function()">
+                            		<option>Select Service</option>
                                     <option value="Hair Treatment">Hair Treatment</option>
                                     <option value="Forming Beard">Forming Beard</option>
                                     <option value="Hair Wash">Hair Wash</option>
@@ -122,25 +134,29 @@
                             </td>
                         <!-- </div> -->
                     </tr>
-                    <tr>
+                    <tr>  <div>
                         <!-- <div class="form-field"> -->
                             <td>
                                 <p><label for="beautician">Beautician :</label></p>
+                                </td>
+                                <td>
+                                <select id="beautician"  name ="beautician" onchange="random_function1()">
+                                </select>
                             </td>
-                            <td><select name="beautician" id="beautician">
-                                    <option value="Arif Balvar">Arif Balvar</option>
-                                    <option value="Pinky Sharma">Pinky Sharma</option>
-                                    <option value="Rocky Sharma">Rocky Sharma</option>
-                                    <option value="Mehul Bhathhi">Mehul Bhathhi</option>
-                                    <option value="Marie ">Marie </option>
-                                    <option value="Lara">Lara</option>
-                                    <option value="Kiki">Kiki</option>
-                                    <option value="Jack">Jack</option>
-                                </select></td>
+
+
+
+
+
+
+
+
+
+        </div>
                         <!-- </div> -->
                     </tr>
                 </table>
-                <button class="btn" onclick="alert('Your Appointments is booked!!')">BOOK</button>
+                <button class="btn" onclick="alert('Checking For Availability .....')">BOOK</button>
             </form>
 
         </div>
@@ -150,6 +166,51 @@
 <script>
 var today = new Date().toISOString().split('T')[0];
 document.getElementsByName("txtDate")[0].setAttribute('min', today);
+
+                function random_function()
+                {
+                var a=document.getElementById("service").value;
+                if(a==="Hair Treatment")
+                {
+                    var arr=["Pinky Sharma","Maitree Patel"];
+                }
+                else if(a==="Forming Beard")
+                {
+                    var arr=["Jack ","Ian Bell"];
+                }
+                else if(a==="Hair Cut")
+                {
+                    var arr=["Rocky Sharma","Mehul Patel"];
+                }
+                else if(a==="Hair Wash")
+                {
+                    var arr=["Ashish Mistry"];
+                }
+                else if(a=="massage")
+                {
+                    var arr=["Marie","Kiki"]
+                }
+                else if(a=="Wedding")
+                {
+                    var arr=["Mehul Bhathhi","Manish Patel"]
+                }
+                else if(a=="Facial and Skin Care")
+                {
+                    var arr=["Arif Balvar","Shivam Shah"]
+                }
+                else if(a=="MakeUp")
+                {
+                    var arr=["lara","Lisa"]
+                }
+
+                var string="";
+
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("beautician").innerHTML=string;
+            }
 
 
 

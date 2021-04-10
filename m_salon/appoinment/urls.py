@@ -9,5 +9,9 @@ from home import views as home_views
 urlpatterns = [
        path('appoinment/', views.appoinment ,name='appoinment'),
        path('handlerequst/', views.handlerequest, name='handlerequest'),
+       path('bill/',views.bill,name='bill'),
+       path('payment/',views.payment,name='payment')
+
+
 
 ]

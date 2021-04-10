@@ -25,6 +25,16 @@
     </ul>
   </div>
 </nav>
+    {% block body %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong> </strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endblock body %}
 
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -34,7 +44,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Sign Up</title>
 
     <!-- Icons font CSS-->
     <link href="{%static 'vendor/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
@@ -116,7 +126,7 @@
             </div>
         </div>
     </div>
-
+    {{forms.error}}
     <!-- Jquery JS-->
     <script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>
     <!-- Vendor JS-->

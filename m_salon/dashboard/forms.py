@@ -14,4 +14,4 @@ class CustomerForm(ModelForm):
     class Meta:
         model = register
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user','password','confirm']

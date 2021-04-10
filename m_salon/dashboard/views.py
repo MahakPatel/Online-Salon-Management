@@ -1,6 +1,8 @@
 from django.forms import inlineformset_factory
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.contrib import messages
 from payment import Checksum
 from django.views.decorators.csrf import csrf_exempt
 from Staff.models import Staff
@@ -9,13 +11,15 @@ from home.models import register
 from services.models import service
 from .filters import OrderFilter
 from .forms import OrderForm, CustomerForm
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from .models import *
-
+from django.contrib.auth.models import User
 MERCHANT_KEY = 'jYeGkvD385PQPBeD'
 
 
 # Create your views here.
-
 def dashboard(request):
     Bookings = Booking.objects.all()
     customers = register.objects.all()
@@ -58,12 +62,18 @@ def updateOrder(request, pk):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
+            templete = render_to_string('update_email.html', {'name': request.user.register.username,'status':Booking.status})
+            send_mail('Appoinment is Booked',
+                     templete,
+                      settings.EMAIL_HOST_USER,
+                      [request.user.register.email], fail_silently=False)
             return redirect('/dashboard')
+
 
     context = {'form': form}
     return render(request, 'order_form.html', context)
 
-
+@login_required(login_url='loginhandle')
 def deleteOrder(request, pk):
     order = Booking.objects.get(id=pk)
     if request.method == "POST":
@@ -73,7 +83,7 @@ def deleteOrder(request, pk):
     context = {'item': order}
     return render(request, 'delete.html', context)
 
-
+@login_required(login_url='adminlogin')
 def createOrder(request, pk):
     OrderFormSet = inlineformset_factory(register, Booking,
                                          fields=('name', 'email', 'service', 'status', 'date', 'time'), extra=1)
@@ -123,7 +133,7 @@ def handlerequest(request):
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'paymentstatus.html', {'response': response_dict})
 
-
+@login_required(login_url='loginhandle')
 def userPage(request):
     orders = request.user.register.booking_set.all()
 
@@ -138,3 +148,17 @@ def userPage(request):
     context = {'orders': orders, 'total_orders': total_Bookings,
                'Booking': Booked, 'pending': pending, 'customer': customer}
     return render(request, 'user.html', context)
+
+@login_required(login_url='loginhandle')
+def accountSettings(request):
+    customer = request.user.register
+    form = CustomerForm(instance=customer)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Profile Updated Successfully')
+
+
+    context = {'form': form}
+    return render(request, 'account_setting.html', context)

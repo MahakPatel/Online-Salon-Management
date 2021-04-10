@@ -43,22 +43,17 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="/"><h3>Home</h3></a></li>
-
-
 							<li class="menu-item"><a href="/new"><h3>Gallery</h3></a></li>
-							{% if x.is_authenticated %}
-							<li class="menu-item"><a href="/user_dash"><h3>Hello,{{request.user}}</h3></a></li>
-
+							<li class="menu-item"><a href="/service"><h3>Services</h3></a></li>
+							{% if user.is_authenticated %}
+								<li class="menu-item"><a href="/appoinment"><h3>Appoinment</h3></a></li>
+								<li class="menu-item"><a href="/user_dash"><h3>Hello,{{request.user}}</h3></a></li>
 							{% else %}
-
-							<li class="menu-item"><a href="/appoinment"><h3>Appoinment</h3></a></li>
-							<li class="menu-item"><a href="/loginhandle"><h3>Login</h3></a></li>
-							<li class="menu-item"><a href="/signup"><h3>Signup</h3></a></li>
-
-
-
+								<li class="menu-item"><a href="/signup"><h3>SignUp</h3></a></li>
+								<li class="menu-item"><a href="/loginhandle"><h3>Login</h3></a></li>
 							{% endif %}
-							<li class="menu-item"><a href="/contact"><h3>Contact</h3></a></li>
+								<li class="menu-item"><a href="/contact"><h3>Contact</h3></a></li>
+
 
 
 						</ul> <!-- .menu -->
@@ -173,7 +168,7 @@
 										<img src="{% static 'images/icon-map-small.png'%}" class="icon">
 										<p><strong>M&M Hair Saloon</strong> 263, Navsari</p>
 									</address>
-									<a href="mailto:M&Msaloon@gmail.com" class="mail"><img src="{% static 'images/icon-envelope-small.png'%}" class="icon">M&Msaloon@gmail.com</a>
+									<a href="mmsalon0@gmail.com" class="mail"><img src="{% static 'images/icon-envelope-small.png'%}" class="icon">mmsalon0@gmail.com</a>
 									<a href="(+91) 9652384523" class="phone"><img src="{% static 'images/icon-phone-small.png'%}" class="icon">(+91) 9652384523</a>
 								</div>
 							</div>

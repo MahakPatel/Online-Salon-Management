@@ -1,0 +1,84 @@
+{%load static%}
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Bill</title>
+		<link rel="stylesheet" href="{% static 'css/style3.css'%}">
+		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+
+	</head>
+	<body>
+		{% block content %}
+		<header>
+			<h1>BILL</h1>
+				<p>M&M salon</p>
+				<p>101 Near chikhli college<br>Bilimora</p>
+				<p>9876543210</p>
+				<p>mmsalon0@gmail.com</p>
+			</address>
+
+		</header>
+		<article>
+			  <h1>Recipient</h1>
+
+				<p>By<br> {{beautician}}</p>
+
+			<table class="meta">
+				<tr>
+					<th>Invoice #</th>
+					<td>{{id}}</td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<td>{{appoinment.date}}</td>
+				</tr>
+
+			</table>
+			<table class="inventory">
+				<thead>
+					<tr>
+
+    <th>Name</th>
+						<td>{{u_name}}</td>
+	<th>Service Name</th>
+						<td>{{bill.Service}}</td>
+
+    <th>Price </th>
+						<td>{{bill.price}}</td>
+
+
+					</tr>
+				</thead>
+				<tbody>
+
+
+{% for i in m %}
+     <tr>
+      {% for j in i %}
+
+      <td><span contenteditable>{{j}}</span></td>
+
+
+{% endfor %}
+    </tr>
+{% endfor %}
+
+
+				</tbody>
+			</table>
+
+			<table class="balance">
+				<tr>
+					<th>Total</th>
+					<td><span data-prefix></span>{{amount}}{{bill.price}}</td>
+				</tr>
+
+			</table>
+
+		</article>
+		<td><a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'payment' %}">Payment</a></td>
+
+		{% endblock %}
+	</body>
+</html>

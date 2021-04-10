@@ -4,18 +4,18 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from social_core.backends import username
+
 
 from .models import register
 
 
 def logouthandle(request):
-    auth.logout(request)
-    return redirect(('/'))
+    logout(request)
+    return redirect(('/home'))
 
 
 def home(request):
@@ -31,29 +31,37 @@ def signup(request):
 
         phone = request.POST['phone']
         confirm = request.POST['pass']
-
         # validations
         if len(username) < 3:
-            messages.error(request, "Username must be greater than 3 characters ")
+            messages.warning(request, "Username must be greater than 3 characters ")
             return render(request, 'regi.html')
         if not username.isalnum():
-            messages.error(request, "Username only contain letter and numbers ")
+            messages.warning(request, "Username only contain letter and numbers ")
             return render(request, 'regi.html')
         if password != confirm:
-            messages.error(request, "passwords do not match ")
+            messages.warning(request, "passwords do not match ")
             return render(request, 'regi.html')
         if len(email) < 6:
-            messages.error(request, "Email must be greater than 6 letter")
+            messages.warning(request, "Email must be greater than 6 letter")
             return render(request, 'regi.html')
         if len(password) < 8:
-            messages.error(request, " Password Must be 8 Char long ")
+            messages.warning(request, " Password Must be 8 Char long ")
+            return render(request, 'regi.html')
+        if User.objects.filter(email=email).exists():
+            messages.warning(request,"Email Already Exists Try Another One")
+            return render(request, 'regi.html')
+        if User.objects.filter(username=username).exists():
+            messages.warning(request,"Username Already Exists Try Another One")
+            return render(request, 'regi.html')
+        else:
 
-        myuser = User.objects.create_user(username,lastname, email,phone, password)
-        myuser.save()
-        x1 = register(username=username, lastname=lastname, email=email,
+            myuser = User.objects.create_user(username, email, password)
+            myuser.save()
+            x1 = register(username=username, lastname=lastname, email=email,
                       phone=phone, password=password, confirm=confirm)
-        x1.save()
-        return redirect('/login1')
+            x1.save()
+            messages.success(request,'Register Successfully')
+            return redirect('/login1')
 
     else:
         return render(request, 'regi.html')
@@ -68,9 +76,10 @@ def loginhandle(request):
         print(x)
         if x is not None:
             login(request, x)
+            messages.success(request, 'Login Successfully')
             return redirect('/home', x)
         else:
-            messages.info(request, 'invalid username or password')
+            messages.warning(request, 'invalid username or password')
             return redirect("loginhandle")
     else:
         return render(request, 'login.html')
@@ -127,8 +136,9 @@ def adminlogin(request):
     if request.method == 'POST':
         adminname = request.POST.get('adminname')
         password = request.POST.get('password')
+        print(adminname,password)
         if (adminname =='admin1'):
-            if(password =='admin1'):
+            if(password =='admin'):
                 return redirect('/dashboard')
             else:
                 messages.info(request, 'invalid username or password')

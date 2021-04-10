@@ -12,5 +12,7 @@ urlpatterns = [
     path('delete_order/<str:pk>/', views.deleteOrder, name="deleteOrder"),
     path('user_dashboard/', views.userPage, name="user_dash"),
     path('handlerequst/', views.handlerequest, name='handlerequest'),
+    path('account/', views.accountSettings, name='account'),
+
 
 ]

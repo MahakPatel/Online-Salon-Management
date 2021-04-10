@@ -46,7 +46,7 @@ urlpatterns = [
     path('new/', gallery_views.new),
     path('contact/', contact_views.contact),
     path('home/', home_views.home),
-    path('service/', services_views.service),
+    path('service/', services_views.service1),
     path('about/', about_views.about),
     path('loginhandle/', home_views.loginhandle),
     path('logouthandle/', home_views.logouthandle),
@@ -64,7 +64,8 @@ urlpatterns = [
     path('user_dash/', dashboard_views.userPage),
     path('myprofile/', home_views.updateprofile),
     path('dashboard/handlerequest/', dashboard_views.createOrder),
-
+    path('bill/', appoinment_views.bill),
+    path('account/', dashboard_views.accountSettings),
 
 ]
 
