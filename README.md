@@ -18,3 +18,6 @@ Then install the project dependencies with
     python manage.py runserver
 
 * Note : if you want payments to work you will need to enter your own Merchant Id and Merchant Key in payment method
+
+** For Demo :
+        https://drive.google.com/file/d/1rL6RNK7wM-88r03n8REDfTbLNs1MbvIC/view?usp=sharing
