@@ -1,7 +1,7 @@
 # Online Salon Management System
 
 
-# Running this project :
+# Running this project 
 
 To get this project up and running you should start by having Python installed on your computer. It's advised you create a virtual environment to store your projects dependencies separately. You can install virtualenv with
 
@@ -19,6 +19,6 @@ Then install the project dependencies with
 
 * Note : if you want payments to work you will need to enter your own Merchant Id and Merchant Key in payment method
 
-* For Demo :
+# For Quick Demo :
 
     https://drive.google.com/file/d/1rL6RNK7wM-88r03n8REDfTbLNs1MbvIC/view?usp=sharing
