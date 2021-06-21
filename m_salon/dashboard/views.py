@@ -16,7 +16,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth.models import User
-MERCHANT_KEY = 'jYeGkvD385PQPBeD'
+MERCHANT_KEY = 'Your Merchant Key'
 
 
 # Create your views here.
@@ -98,7 +98,7 @@ def createOrder(request, pk):
             formset.save()
             param_dict = {
 
-                'MID': 'CMHljw77603804792614',
+                'MID': 'Your Merchant Id',
                 'ORDER_ID': '65',
                 'TXN_AMOUNT': '100',
                 'CUST_ID': 'mahakpatel0208@gmail.com',
