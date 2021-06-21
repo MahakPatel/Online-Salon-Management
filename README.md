@@ -16,3 +16,5 @@ That will create a new folder env in your project directory. Next activate it wi
 Then install the project dependencies with
 
     python manage.py runserver
+
+* Note : if you want payments to work you will need to enter your own Merchant Id and Merchant Key in payment method
