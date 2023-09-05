@@ -1,7 +1,7 @@
 # Online Salon Management System
 
 
-# Running this project 
+## Running this project 
 
 First install Djnago
         
